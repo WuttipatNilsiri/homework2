@@ -17,9 +17,11 @@ public class Recursion {
 		if(list.size() == 1) return list;
 		List temp = list.subList(1, list.size());
 		if(list.get(0).equals(list.get(1))){
-			temp.remove(0);
+			//just remove one of them that occur
+			list.remove(0);
 			unique(list);
 		}
+		//divide problem (list) in to small part (n-1)
 		else unique(temp);		
 		return list;
 	}
@@ -50,7 +52,8 @@ public class Recursion {
 	public static long fibo(int num, long next,long start){
 		if(num == 0) return start;
 		if(num == 1) return next;
-		return fibo(num - 1, start+next, next);
+		long newNext = start + next;
+		return fibo(num - 1, newNext, next);
 
 	}
 	
